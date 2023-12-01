@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "robot-parallel-tests"
+name = "Web automation with Pyppeteer"
 version = "0.1.0"
 description = ""
 authors = ["Himanshu Jagdish Sheth <himanshu.sheth@gmail.com>"]
