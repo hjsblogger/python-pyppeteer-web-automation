@@ -19,7 +19,8 @@ test1_url = 'https://ecommerce-playground.lambdatest.io/'
 test2_url = 'https://scrapingclub.com/exercise/list_infinite_scroll/'
 
 # Usecase - 1
-loc_ecomm_1 = ".order-1.col-lg-6 div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) div:nth-of-type(1) > img:nth-of-type(1)"
+# loc_ecomm_1 = ".order-1.col-lg-6 div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) div:nth-of-type(1) > img:nth-of-type(1)"
+loc_ecomm_1 = "[aria-label='1 / 2'] div:nth-of-type(1) > [alt='Nikon D300']"
 target_url_1 = "https://ecommerce-playground.lambdatest.io/index.php?route=product/product&product_id=63"
 
 # Usecase - 2 (Click on e-commerce sliding banner)
@@ -117,18 +118,24 @@ async def test_lazy_load_ecomm_1(page):
     await page.setViewport({'width': 1440, 'height': 770})
 
     await asyncio.sleep(2)
-    
-    # elem_button = await page.waitForXPath(loc_xpath, {'timeout': timeOut})
-    # Scroll until the element is detected
-    elem_button = await scroll_to_element(page, loc_ecomm_1)
 
-    # await page.click(elem_button)
+    if exec_platform == 'local':
+        # Scroll until the element is detected
+        elem_button = await scroll_to_element(page, loc_ecomm_1)
 
-    # Wait until the page is loaded
-    # https://miyakogi.github.io/pyppeteer/reference.html#pyppeteer.page.Page.waitForNavigation
-    navigationPromise = asyncio.ensure_future(page.waitForNavigation())
-    await page.click(elem_button)  # indirectly cause a navigation
-    await navigationPromise  # wait until navigation finishes
+        # await page.click(elem_button)
+
+        # Wait until the page is loaded
+        # https://miyakogi.github.io/pyppeteer/reference.html#pyppeteer.page.Page.waitForNavigation
+        navigationPromise = asyncio.ensure_future(page.waitForNavigation())
+        await page.click(elem_button)
+        await navigationPromise
+    elif exec_platform == 'cloud':
+        elem_button = await page.waitForSelector(loc_ecomm_1, {'visible': True})
+        await asyncio.gather(
+            elem_button.click(),
+            page.waitForNavigation({'waitUntil': 'networkidle2', 'timeout': 30000}),
+        )
     
     # Assert if required, since the test is a simple one; we leave as is :D
     current_url = page.url
