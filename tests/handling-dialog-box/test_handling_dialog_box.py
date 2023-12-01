@@ -46,7 +46,7 @@ dialog_test_url = 'https://www.lambdatest.com/selenium-playground/javascript-ale
 
 loc_alert_arr =  ['.my-30',
                 '.py-20.ml-10 .btn',
-                'section:nth-of-type(3) div:nth-of-type(3) .btn']
+                'section:nth-of-type(2) div:nth-of-type(3) .btn']
 
 test_message = 'LambdaTest is a great platform!'
 
