@@ -115,7 +115,7 @@ async def test_lazy_load_ecomm_1(page):
     
     # Set the viewport - Apple MacBook Air 13-inch
     # Reference - https://codekbyte.com/devices-viewport-sizes/
-    await page.setViewport({'width': 1440, 'height': 770})
+    # await page.setViewport({'width': 1440, 'height': 770})
 
     await asyncio.sleep(2)
 
@@ -161,7 +161,7 @@ async def test_lazy_load_ecomm_2(page):
     
     # Set the viewport - Apple MacBook Air 13-inch
     # Reference - https://codekbyte.com/devices-viewport-sizes/
-    await page.setViewport({'width': 1440, 'height': 770})
+    # await page.setViewport({'width': 1440, 'height': 770})
 
     await asyncio.sleep(2)
 
@@ -205,7 +205,7 @@ async def test_lazy_load_infinite_scroll_1(page):
     
     # Set the viewport - Apple MacBook Air 13-inch
     # Reference - https://codekbyte.com/devices-viewport-sizes/
-    await page.setViewport({'width': 1440, 'height': 770})
+    # await page.setViewport({'width': 1440, 'height': 770})
 
     await asyncio.sleep(1)
 
@@ -250,7 +250,7 @@ async def test_lazy_load_infinite_scroll_2(page):
     
     # Set the viewport - Apple MacBook Air 13-inch
     # Reference - https://codekbyte.com/devices-viewport-sizes/
-    await page.setViewport({'width': 1440, 'height': 770})
+    # await page.setViewport({'width': 1440, 'height': 770})
 
     await asyncio.sleep(1)
 

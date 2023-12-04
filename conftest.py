@@ -23,7 +23,7 @@ cloud_capabilities = {
         'platform': 'Windows 11',
         'build': '[Build] Pytest + Pyppeteer testing on LambdaTest',
         'name': 'Pytest + Pyppeteer testing on LambdaTest',
-        'resolution': '1920x1080',
+        'resolution': '1920x1200',
         'user': username,  # Replace with your LT_USERNAME
         'accessKey': access_key,  # Replace with your LT_ACCESS_KEY
         'network': True,
@@ -61,7 +61,10 @@ async def page(browser):
     page = await browser.newPage()
     # Set the viewport - Apple MacBook Air 13-inch
     # Reference - https://codekbyte.com/devices-viewport-sizes/
-    await page.setViewport({'width': 1440, 'height': 900})
+    if exec_platform == 'local':
+        await page.setViewport({'width': 1440, 'height': 900})
+    elif exec_platform == 'cloud':
+        await page.setViewport({'width': 1920, 'height': 1200})
     yield page
 
     await page.close()

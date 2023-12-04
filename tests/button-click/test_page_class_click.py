@@ -51,7 +51,9 @@ menu_hover_xpath = "//*[@id='__docusaurus']/nav/div[1]/div[2]/div[1]"
 @pytest.mark.asyncio
 @pytest.mark.order(1)
 async def test_click_element(page):
-    await page.goto(test_url)
+    # await page.goto(test_url)
+    await page.goto(test_url,
+        {'waitUntil': 'load'})
 
     # Wait for the 'Shop by Category' menu to be available
     menu_element = await page.waitForXPath(shopcategory)
@@ -62,10 +64,16 @@ async def test_click_element(page):
     # Can be changed with non-blocking sleep
     await asyncio.sleep(2)
 
-    shop_element = await page.waitForSelector(phonecategorySelector)
+    shop_element = await page.waitForSelector(phonecategorySelector, {'visible': True})
 
     # Click on the 'Shop by Category' menu
-    await shop_element.click()
+    if exec_platform == 'local':
+        await shop_element.click()
+    elif exec_platform == 'cloud':
+        await asyncio.gather(
+            shop_element.click(),
+            page.waitForNavigation({'waitUntil': 'networkidle2', 'timeout': 60000}),
+        )
 
     # Can be changed with non-blocking sleep
     await asyncio.sleep(2)
@@ -82,7 +90,7 @@ async def test_click_element(page):
 
     await asyncio.sleep(2)
 
-    elem_macbook = await page.waitForSelector(macbook_locator)
+    elem_macbook = await page.waitForSelector(macbook_locator, {'visible': True})
 
     # Click on the 'Shop by Category' menu
     await elem_macbook.click()
@@ -90,8 +98,14 @@ async def test_click_element(page):
     await asyncio.sleep(2)
 
     # Click on the Buy Now Button
-    elem_buynow = await page.querySelector(button_buynow)
-    await elem_buynow.click()
+    elem_buynow = await page.waitForSelector(button_buynow, {'visible': True})
+    if exec_platform == 'local':
+        await elem_buynow.click()
+    elif exec_platform == 'cloud':
+        await asyncio.gather(
+            elem_buynow.click(),
+            page.waitForNavigation({'waitUntil': 'networkidle2'}),
+        )
 
     await asyncio.sleep(2)
 
