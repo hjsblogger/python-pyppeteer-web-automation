@@ -1,11 +1,15 @@
 # Define variables
 PYTHON := python3
+POETRY := poetry
 PYTEST := pytest
 PIP := pip3
-PROJECT_NAME := web scraping using Python
+PROJECT_NAME := web automation with Pyppeteer
 
 .PHONY: install
 install:
+	$(POETRY) install
+	@echo "Dependency installation complete"
+
 	$(PIP) install -r requirements.txt
 	@echo "Set env vars LT_USERNAME & LT_ACCESS_KEY"
     # Procure Username and AccessKey from https://accounts.lambdatest.com/security
@@ -149,5 +153,21 @@ help:
 	@echo ""
 	@echo "install : Install project dependencies"
 	@echo "clean : Clean up temp files"
-	@echo "pytest-pyppeteer : Run Pyppeteer tests with Pytest framework"
-	@echo "pyunit-pyppeteer : Run Pyppeteer tests with Pyunit framework"
+	@echo "pyunit-pyppeteer : Runing Pyppeteer tests with Pyunit framework"
+	@echo "pytest-pyppeteer : Runing Pyppeteer tests with Pytest framework"
+	@echo "pyppeteer-button-click : Button click demo using Pyppeteer"
+	@echo "pyppeteer-activate-tab : Switching browser tabs using Pyppeteer"
+	@echo "pyppeteer-custom-chromium-version : Custom Chromium version with Pyppeteer"
+	@echo "pyppeteer-custom-browser-mode : Headless and non-headless test execution with Pyppeteer"
+	@echo "pyppeteer-generate-pdf : Generating pdf using Pyppeteer"
+	@echo "pyppeteer-generate-screenshot : Generating page & element screenshots with Pyppeteer"
+	@echo "pyppeteer-cookies : Customizing cookies with Pyppeteer"
+	@echo "pyppeteer-dialog-box : Handling Dialog boxes with Pyppeteer"
+	@echo "pyppeteer-iframe : Handling iFrames with Pyppeteer"
+	@echo "pyppeteer-navigate-ops : Back & Forward browser operations with Pyppeteer"
+	@echo "pyppeteer-request-response : Request and Response demonstration using Pyppeteer"
+	@echo "pyppeteer-viewport : Customizing viewports using Pyppeteer"
+	@echo "pyppeteer-non-headless-useragent : Customizing user-agent (with browser in headed mode) using Pyppeteer"
+	@echo "pyppeteer-headless-useragent : Customizing user-agent (with browser in headless mode) using Pyppeteer"
+	@echo "pyppeteer-dynamic-content : Handling dynamic web content using Pyppeteer"
+	@echo "pyppeteer-web-scraping : Dynamic web scraping using Pyppeteer"
