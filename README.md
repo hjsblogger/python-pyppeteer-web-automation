@@ -1,4 +1,4 @@
-<img width="2200" height="400"alt="Pyppeteer-logo" src="https://github.com/hjsblogger/web-automation-with-pyppeteer/assets/1688653/11df6f89-6af9-4473-a36d-7733a48ec469">
+<img width="2200" height="400" alt="Pyppeteer-logo" src="https://github.com/hjsblogger/web-automation-with-pyppeteer/assets/1688653/11df6f89-6af9-4473-a36d-7733a48ec469">
 
 <div align="center"><a href="https://pythonfix.com/pkg/p/pyppeteer/pyppeteer-banner.webp">Image Credit</a></div>
 <br/>
