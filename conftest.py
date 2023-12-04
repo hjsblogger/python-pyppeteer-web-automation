@@ -61,7 +61,7 @@ async def page(browser):
     page = await browser.newPage()
     # Set the viewport - Apple MacBook Air 13-inch
     # Reference - https://codekbyte.com/devices-viewport-sizes/
-    await page.setViewport({'width': 1440, 'height': 770})
+    await page.setViewport({'width': 1440, 'height': 900})
     yield page
 
     await page.close()
