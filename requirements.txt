@@ -5,4 +5,3 @@ nest_asyncio
 pytest-xdist
 pytest-order
 py
-selenium>=4.6.0
