@@ -142,6 +142,7 @@ pyppeteer-web-scraping:
 clean:
     # This helped: https://gist.github.com/hbsdev/a17deea814bc10197285
 	find . | grep -E "(__pycache__|\.pyc$$)" | xargs rm -rf
+	rm -rf .pytest_cache/
 	@echo "Clean Succeded"
 
 .PHONY: distclean
