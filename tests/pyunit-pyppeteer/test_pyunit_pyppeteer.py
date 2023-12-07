@@ -6,8 +6,6 @@ from urllib.parse import quote
 import json
 import os
 from os import environ
-# import warnings
-# import websockets
 
 exec_platform = os.getenv('EXEC_PLATFORM')
 
