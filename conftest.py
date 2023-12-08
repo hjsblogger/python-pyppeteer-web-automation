@@ -24,8 +24,8 @@ cloud_capabilities = {
         'build': '[Build] Pytest + Pyppeteer testing on LambdaTest',
         'name': 'Pytest + Pyppeteer testing on LambdaTest',
         'resolution': '1920x1200',
-        'user': username,  # Replace with your LT_USERNAME
-        'accessKey': access_key,  # Replace with your LT_ACCESS_KEY
+        'user': username,
+        'accessKey': access_key,
         'network': True,
         'video': True,
         'console': True,
