@@ -36,6 +36,17 @@ pytest-pyppeteer:
 	tests/pytest-pyppeteer/test_pytest_pyppeteer_2.py
 
 .PHONY: test
+pyunit-pyppeteer-browser-session:
+	- echo $(EXEC_PLATFORM)
+	- $(PYTHON) tests/starting-browser-session/pyunit/test_pyunit_browser_session.py
+
+.PHONY: test
+pytest-pyppeteer-browser-session:
+	- echo $(EXEC_PLATFORM)
+	- $(PYTEST) --verbose --capture=no -s \
+	tests/starting-browser-session/pytest/test_pytest_browser_session.py
+
+.PHONY: test
 pyppeteer-button-click:
 	- echo $(EXEC_PLATFORM)
 	- $(PYTEST) --verbose --capture=no -s tests/button-click/test_page_class_click.py
