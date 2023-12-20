@@ -7,9 +7,11 @@ import os
 import sys
 from os import environ
 from pyppeteer import connect, launch
-sys.path.append(sys.path[0] + "/../..")
 
 exec_platform = os.getenv('EXEC_PLATFORM')
+# Get username and access key of the LambdaTest Platform
+username = environ.get('LT_USERNAME', None)
+access_key = environ.get('LT_ACCESS_KEY', None)
 
 test_url = 'https://ecommerce-playground.lambdatest.io/'
 product_url = 'https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=57'
@@ -51,7 +53,6 @@ menu_hover_xpath = "//*[@id='__docusaurus']/nav/div[1]/div[2]/div[1]"
 @pytest.mark.asyncio
 @pytest.mark.order(1)
 async def test_click_element(page):
-    # await page.goto(test_url)
     await page.goto(test_url,
         {'waitUntil': 'load'})
 
