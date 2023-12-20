@@ -35,7 +35,7 @@ local_capabilities = {
         'browserName': 'Chrome'
 }
 
-class MyAsyncTestCase(unittest.IsolatedAsyncioTestCase):
+class LambdaTestAsyncTest(unittest.IsolatedAsyncioTestCase):
     async def asyncSetUp(self):
         if exec_platform == 'cloud':
             capability = quote(json.dumps(cloud_capabilities))

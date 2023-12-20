@@ -20,7 +20,7 @@ cloud_capabilities = {
         'browserName': 'Chrome',
         'browserVersion': 'latest',
         'LT:Options': {
-            'platform': 'Windows 10',
+            'platform': 'Windows 11',
             'build': '[Build] Launching browser session with Pyppeteer (with Pytest)',
             'name': 'Launching browser session with Pyppeteer (with Pytest)',
             'user': username,
@@ -36,8 +36,6 @@ cloud_capabilities = {
 local_capabilities = {
         'browserName': 'Chrome'
 }
-
-# Selectors of the page
 
 # Pytest fixture for browser setup
 @pytest.fixture(scope='function')
