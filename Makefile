@@ -38,13 +38,24 @@ pytest-pyppeteer:
 .PHONY: test
 pyunit-pyppeteer-browser-session:
 	- echo $(EXEC_PLATFORM)
-	- $(PYTHON) tests/starting-browser-session/pyunit/test_pyunit_browser_session.py
+	- $(PYTHON) tests/starting-browser-session/pyunit/test_pyppeteer_browser_session.py
 
 .PHONY: test
 pytest-pyppeteer-browser-session:
 	- echo $(EXEC_PLATFORM)
 	- $(PYTEST) --verbose --capture=no -s \
-	tests/starting-browser-session/pytest/test_pytest_browser_session.py
+	tests/starting-browser-session/pytest/test_pyppeteer_browser_session.py
+
+.PHONY: test
+asyncio-run-pyppeteer-browser-session:
+	- echo $(EXEC_PLATFORM)
+	- $(PYTHON) tests/starting-browser-session/asyncio_run/test_pyppeteer_browser_session.py
+
+.PHONY: test
+asyncio-run-complete-pyppeteer-browser-session:
+	- echo $(EXEC_PLATFORM)
+	- $(PYTHON) tests/starting-browser-session/\
+	asyncio_run_until_complete/test_pyppeteer_browser_session.py
 
 .PHONY: test
 pyppeteer-button-click:
@@ -154,7 +165,7 @@ clean:
     # This helped: https://gist.github.com/hbsdev/a17deea814bc10197285
 	find . | grep -E "(__pycache__|\.pyc$$)" | xargs rm -rf
 	rm -rf .pytest_cache/
-	@echo "Clean Succeded"
+	@echo "Clean Succeeded"
 
 .PHONY: distclean
 distclean: clean
@@ -165,8 +176,12 @@ help:
 	@echo ""
 	@echo "install : Install project dependencies"
 	@echo "clean : Clean up temp files"
-	@echo "pyunit-pyppeteer : Runing Pyppeteer tests with Pyunit framework"
-	@echo "pytest-pyppeteer : Runing Pyppeteer tests with Pytest framework"
+	@echo "pyunit-pyppeteer : Running Pyppeteer tests with Pyunit framework"
+	@echo "pytest-pyppeteer : Running Pyppeteer tests with Pytest framework"
+	@echo "pyunit-pyppeteer-browser-session : Browser session using Pyppeteer and Pyunit"
+	@echo "pytest-pyppeteer-browser-session : Browser session using Pyppeteer and Pytest"
+	@echo "asyncio-run-pyppeteer-browser-session : Browser session using Pyppeteer (Approach 1)"
+	@echo "asyncio-run-complete-pyppeteer-browser-session : Browser session using Pyppeteer (Approach 2)"
 	@echo "pyppeteer-button-click : Button click demo using Pyppeteer"
 	@echo "pyppeteer-activate-tab : Switching browser tabs using Pyppeteer"
 	@echo "pyppeteer-custom-chromium-version : Custom Chromium version with Pyppeteer"
