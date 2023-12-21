@@ -7,11 +7,10 @@ import os
 import sys
 from os import environ
 from pyppeteer import connect, launch
-sys.path.append(sys.path[0] + "/../..")
 
 exec_platform = os.getenv('EXEC_PLATFORM')
 
-# Can take values - headless and non-headless
+# Can take values - 121, 113, and default (i.e. no specified version)
 chromium_version = os.getenv('CHROMIUM_VERSION')
 
 # Pytest fixture for browser setup
