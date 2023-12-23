@@ -33,7 +33,6 @@ async def test_screenshot(page):
 
     # Wait for the element to be present in the DOM
     elem_prod_link = await page.waitForSelector(loc_product_1, {'visible': True})
-    # elem_prod_link = await page.querySelector(loc_product_1)
 
     await asyncio.sleep(2)
 
@@ -70,4 +69,7 @@ async def test_screenshot(page):
     await asyncio.sleep(1)
 
     # Take a screenshot of the entire page
-    await page.screenshot({'path': 'page-screenshot.png'})
+    await page.screenshot({'path': 'page-screenshot.png', 'fullPage': False})
+
+    # Take a screenshot of the scrollable page
+    await page.screenshot({'path': 'scrollable-page-screenshot.png', 'fullPage': True})
