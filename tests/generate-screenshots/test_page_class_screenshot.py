@@ -20,22 +20,6 @@ loc_product_1 = "#mz-product-grid-image-43-212408 > div > div.carousel-item.acti
 loc_final_product = "#image-gallery-216811 > div.image-thumb.d-flex > a > img"
 target_url = "https://ecommerce-playground.lambdatest.io/index.php?route=product/product&path=25_30&product_id=43"
 
-# # Pytest fixture for browser setup
-# @pytest.fixture(scope='function')
-# async def browser():
-#     if exec_platform == 'local':
-#         browser = await launch(headless = False, args=['--start-maximized'])
-#     yield browser
-#     await asyncio.sleep(1)    
-#     # await browser.close()
-
-# # Pytest fixture for page setup
-# @pytest.fixture(scope='function')
-# async def page(browser):
-#     page = await browser.newPage()
-#     yield page
-#     # await page.close()
-
 @pytest.mark.asyncio
 @pytest.mark.order(1)
 async def test_screenshot(page):
