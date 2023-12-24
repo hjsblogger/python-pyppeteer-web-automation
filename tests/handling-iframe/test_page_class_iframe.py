@@ -35,22 +35,6 @@ async def scroll_to_element(page, element):
         }'''
     )
 
-# Pytest fixture for browser setup
-# @pytest.fixture(scope='function')
-# async def browser():
-#     if exec_platform == 'local':
-#         browser = await launch(headless = False, args=['--start-maximized'])
-#     yield browser
-#     await asyncio.sleep(1)    
-#     # await browser.close()
-
-# # Pytest fixture for page setup
-# @pytest.fixture(scope='function')
-# async def page(browser):
-#     page = await browser.newPage()
-#     yield page
-#     # await page.close()
-
 @pytest.mark.asyncio
 @pytest.mark.order(1)
 async def test_handling_iframe_1(page):
@@ -60,7 +44,7 @@ async def test_handling_iframe_1(page):
     # Reference - https://codekbyte.com/devices-viewport-sizes/
     await page.setViewport({'width': 1440, 'height': 770})
 
-    asyncio.sleep(2)
+    await asyncio.sleep(2)
 
     # Get the iframe element handle
     iframe_handle = await page.querySelector(loc_iframe_1)
@@ -114,7 +98,7 @@ async def test_handling_iframe_2(page):
     # Reference - https://codekbyte.com/devices-viewport-sizes/
     await page.setViewport({'width': 1440, 'height': 770})
 
-    asyncio.sleep(2)
+    await asyncio.sleep(2)
 
     # Get the iframe element handle
     iframe_handle = await page.waitForXPath(loc_iframe_2)
