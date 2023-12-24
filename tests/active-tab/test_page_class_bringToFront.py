@@ -7,25 +7,24 @@ import os
 import sys
 from os import environ
 from pyppeteer import connect, launch
-sys.path.append(sys.path[0] + "/../..")
 
 exec_platform = os.getenv('EXEC_PLATFORM')
 
 # # Pytest fixture for browser setup
-# @pytest.fixture(scope='function')
-# async def browser():
-#     if exec_platform == 'local':
-#         browser = await launch(headless = False, args=['--start-maximized'])
-#     yield browser
-#     await asyncio.sleep(1)    
-#     await browser.close()
+@pytest.fixture(scope='function')
+async def browser():
+    if exec_platform == 'local':
+        browser = await launch(headless = False, args=['--start-maximized'])
+    yield browser
+    await asyncio.sleep(1)    
+    await browser.close()
 
-# # Pytest fixture for page setup
-# @pytest.fixture(scope='function')
-# async def page(browser):
-#     page = await browser.newPage()
-#     yield page
-#     await page.close()
+# Pytest fixture for page setup
+@pytest.fixture(scope='function')
+async def page(browser):
+    page = await browser.newPage()
+    yield page
+    await page.close()
 
 @pytest.mark.asyncio
 async def test_bring_to_front(browser, page):
