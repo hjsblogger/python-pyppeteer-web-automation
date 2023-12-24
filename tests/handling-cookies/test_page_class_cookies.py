@@ -7,36 +7,16 @@ import os
 import sys
 from os import environ
 from pyppeteer import connect, launch
-sys.path.append(sys.path[0] + "/../..")
 
 exec_platform = os.getenv('EXEC_PLATFORM')
 test_url = 'https://ecommerce-playground.lambdatest.io/'
 
 cookie_dict = {}
 
-# Pytest fixture for browser setup
-# Only for reference, taken care of in conftest.py
-
-# @pytest.fixture(scope='function')
-# async def browser():
-#     if exec_platform == 'local':
-#         browser = await launch(headless = False)
-#     yield browser
-#     await asyncio.sleep(1)    
-#     await browser.close()
-
-# # Pytest fixture for page setup
-# @pytest.fixture(scope='function')
-# async def page(browser):
-#     page = await browser.newPage()
-#     yield page
-#     await page.close()
-
-
 @pytest.mark.asyncio
-@pytest.mark.order1
+@pytest.mark.order(1)
 async def test_get_cookie_info(page):
-    await page.goto('https://ecommerce-playground.lambdatest.io/')
+    await page.goto(test_url)
 
     await asyncio.sleep(1)
 
@@ -54,17 +34,16 @@ async def test_get_cookie_info(page):
         print()
 
 @pytest.mark.asyncio
-@pytest.mark.order2
+@pytest.mark.order(2)
 async def test_delete_cookies(page):
     before_del_cookies = {}
     after_del_cookies = {}
 
-    await page.goto('https://ecommerce-playground.lambdatest.io/')
+    await page.goto(test_url)
 
     await asyncio.sleep(12)
 
     # https://miyakogi.github.io/pyppeteer/reference.html#pyppeteer.page.Page.cookies
-
     # Create/Add a new cookie
     await page.setCookie({'name': 'pyppeteer', 'value': 'v1.0.2'})
 
