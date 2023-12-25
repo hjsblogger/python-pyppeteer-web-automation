@@ -65,7 +65,7 @@ pyppeteer-button-click:
 .PHONY: test
 pyppeteer-activate-tab:
 	- echo $(EXEC_PLATFORM)
-	- $(PYTEST) --verbose --capture=no -s tests/active-tab/test_page_class_bringToFront.py
+	- $(PYTEST) --verbose --capture=no -s tests/active-tab/test_page_class_bringtofront.py
 
 ###### Testing Custom Environment - https://miyakogi.github.io/pyppeteer/reference.html#environment-variables
 # Available versions: 113, 121, and default 
