@@ -7,34 +7,13 @@ import os
 import sys
 from os import environ
 from pyppeteer import connect, launch
-sys.path.append(sys.path[0] + "/../..")
-
-exec_platform = os.getenv('EXEC_PLATFORM')
-
-# Fixture is handled as a part of conftest.py
-# The below code is added for reference, in case browser and page fixture 
-# has to be setup without the usage of conftest.py
-# Pytest fixture for browser setup
-# @pytest.fixture(scope='function')
-# async def browser():
-#     if exec_platform == 'local':
-#         browser = await launch(headless = False, args=['--start-maximized'])
-#     yield browser
-#     await asyncio.sleep(1)    
-#     await browser.close()
-
-# # Pytest fixture for page setup
-# @pytest.fixture(scope='function')
-# async def page(browser):
-#     page = await browser.newPage()
-#     yield page
-#     await page.close()
 
 # Documentation Link
 # https://miyakogi.github.io/pyppeteer/reference.html#dialog-class
 
 # Interesting reference question
-# https://stackoverflow.com/questions/75622322/why-dialog-popup-alert-doesnt-dismiss-as-they-claim-by-using-pyppeteer-class
+# https://stackoverflow.com/questions/75622322/
+# why-dialog-popup-alert-doesnt-dismiss-as-they-claim-by-using-pyppeteer-class
 
 # Scenario Handling Alerts
 dialog_test_url = 'https://www.lambdatest.com/selenium-playground/javascript-alert-box-demo'
@@ -46,7 +25,7 @@ dialog_test_url = 'https://www.lambdatest.com/selenium-playground/javascript-ale
 
 loc_alert_arr =  ['.my-30',
                 '.py-20.ml-10 .btn',
-                'section:nth-of-type(2) div:nth-of-type(3) .btn']
+                'section:nth-of-type(3) div:nth-of-type(3) .btn']
 
 test_message = 'LambdaTest is a great platform!'
 
@@ -137,6 +116,8 @@ async def test_handling_prompt_alerts(page):
     await asyncio.sleep(1)
 
     page.on('dialog', handle_confirm_prompt_dialog_box)
+
+    await asyncio.sleep(1)
 
     # Prompt Alert
     elem_alert = await page.querySelector(loc_alert_arr[2])
