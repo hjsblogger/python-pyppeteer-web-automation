@@ -125,6 +125,4 @@ async def test_handling_prompt_alerts(page):
     # Click on the located element
     await elem_alert.click()
 
-    page.on('dialog', handle_confirm_dismiss_dialog_box)
-
     await asyncio.sleep(2)
