@@ -7,24 +7,8 @@ import os
 import sys
 from os import environ
 from pyppeteer import connect, launch
-sys.path.append(sys.path[0] + "/../..")
 
 test_url = 'https://ecommerce-playground.lambdatest.io/index.php?route=product/category&path=57'
-
-# # Pytest fixture for browser setup
-# @pytest.fixture(scope='function')
-# async def browser():
-#     browser = await launch(headless = True, args=['--start-maximized']) 
-#     yield browser
-#     await asyncio.sleep(1)    
-#     await browser.close()
-
-# # Pytest fixture for page setup
-# @pytest.fixture(scope='function')
-# async def page(browser):
-#     page = await browser.newPage()
-#     yield page
-#     await page.close()
 
 @pytest.mark.asyncio
 async def test_ecommerce_scraping(page):
