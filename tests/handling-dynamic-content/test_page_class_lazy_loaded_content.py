@@ -39,21 +39,6 @@ target_url_4 = "https://scrapingclub.com/exercise/list_basic_detail/94967-A/"
 # Set timeout in ms
 timeOut = 60000
 
-# @pytest.fixture(scope='function')
-# async def browser():
-#     if exec_platform == 'local':
-#         browser = await launch(headless = False, args=['--start-maximized'])
-#     yield browser
-#     await asyncio.sleep(1)    
-#     await browser.close()
-
-# # Pytest fixture for page setup
-# @pytest.fixture(scope='function')
-# async def page(browser):
-#     page = await browser.newPage()
-#     yield page
-#     await page.close()
-
 async def scroll_to_element(page, selector):
     # Scroll until the element is detected
     await page.evaluateHandle(
@@ -158,10 +143,6 @@ async def test_lazy_load_ecomm_2(page):
     page.setDefaultNavigationTimeout(timeOut)
     await page.goto(test1_url,
         {'waitUntil': 'load', 'timeout': timeOut})
-    
-    # Set the viewport - Apple MacBook Air 13-inch
-    # Reference - https://codekbyte.com/devices-viewport-sizes/
-    # await page.setViewport({'width': 1440, 'height': 770})
 
     await asyncio.sleep(2)
 
@@ -175,7 +156,6 @@ async def test_lazy_load_ecomm_2(page):
     
     await asyncio.sleep(1)
 
-    # elem_prod_1 = await page.querySelector(loc_ecomm_2)
     elem_prod_1 = await page.waitForSelector(loc_ecomm_2, {'visible': True})
     await asyncio.gather(
         elem_prod_1.click(),
@@ -202,10 +182,6 @@ async def test_lazy_load_infinite_scroll_1(page):
     page.setDefaultNavigationTimeout(timeOut)
     await page.goto(test2_url,
         {'waitUntil': 'load', 'timeout': timeOut})
-    
-    # Set the viewport - Apple MacBook Air 13-inch
-    # Reference - https://codekbyte.com/devices-viewport-sizes/
-    # await page.setViewport({'width': 1440, 'height': 770})
 
     await asyncio.sleep(1)
 
@@ -215,14 +191,6 @@ async def test_lazy_load_infinite_scroll_1(page):
         elem_prod1.click(),
         page.waitForNavigation({'waitUntil': 'networkidle2', 'timeout': 60000}),
     )
-
-    # await asyncio.sleep(1)
-    # await elem_carousel_banner.click()
-
-    # elem_button = scroll_to_element(page, loc_infinite_src_prod1)
-    # print(elem_button)
-    # await asyncio.sleep(2)
-    # await elem_button.click()
     
     # Assert if required, since the test is a simple one; we leave as is :D
     current_url = page.url
@@ -243,14 +211,8 @@ async def test_lazy_load_infinite_scroll_2(page):
     page.setDefaultNavigationTimeout(timeOut)
 
     # Tested navigation using LambdaTest YouTube channel
-
-    # await page.goto("https://www.youtube.com/@LambdaTest/videos",
     await page.goto(test2_url, 
         {'waitUntil': 'load', 'timeout': timeOut})
-    
-    # Set the viewport - Apple MacBook Air 13-inch
-    # Reference - https://codekbyte.com/devices-viewport-sizes/
-    # await page.setViewport({'width': 1440, 'height': 770})
 
     await asyncio.sleep(1)
 
@@ -259,15 +221,6 @@ async def test_lazy_load_infinite_scroll_2(page):
     await page.evaluate('window.scrollTo(0, 0)')
 
     await asyncio.sleep(1)
-
-    # elem_prod = await page.querySelector(loc_infinite_src_prod2)
-
-    # asyncio.sleep(1)
-
-    # await asyncio.gather(
-    #     elem_prod.click(),
-    #     page.waitForNavigation({'waitUntil': 'load', 'timeout': 60000}),
-    # )
 
     elem_button = await scroll_to_element(page, loc_infinite_src_prod2)
 
