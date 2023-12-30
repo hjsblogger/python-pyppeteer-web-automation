@@ -9,7 +9,6 @@ import os
 import sys
 from os import environ
 from pyppeteer import connect, launch
-sys.path.append(sys.path[0] + "/../..")
 
 exec_platform = os.getenv('EXEC_PLATFORM')
 
